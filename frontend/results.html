@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Results | Blockchain Voting System</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/results.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="/">Blockchain Voting System</a>
+        <nav class="nav-links">
+          <a href="/admin.html">Admin Panel</a>
+          <a href="/vote.html">Vote Now</a>
+          <a class="active" href="/results.html">Results</a>
+          <a href="/blockchain.html">Blockchain</a>
+        </nav>
+      </header>
+
+      <main class="page-content">
+        <section class="page-header">
+          <div>
+            <p class="eyebrow">Public Results</p>
+            <h1>Blockchain-derived Vote Count</h1>
+            <p class="section-copy">
+              Final totals are calculated from the chain data, not from a
+              separate voting table.
+            </p>
+          </div>
+          <button id="refreshResultsButton" class="button button-secondary">
+            Refresh Results
+          </button>
+        </section>
+
+        <div id="resultsAlert" class="alert info" hidden></div>
+
+        <section class="stats-grid">
+          <article class="stat-card">
+            <span class="stat-label">Election Status</span>
+            <strong id="resultsElectionStatus" class="status-badge neutral"
+              >Loading...</strong
+            >
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Total Votes</span>
+            <strong id="resultsTotalVotes">0</strong>
+          </article>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Candidate-wise Results</h2>
+            <p>Each vote total below was counted from stored blocks.</p>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Candidate ID</th>
+                  <th>Name</th>
+                  <th>Party</th>
+                  <th>Votes</th>
+                </tr>
+              </thead>
+              <tbody id="resultsPageTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

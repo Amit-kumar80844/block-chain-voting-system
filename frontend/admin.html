@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel | Blockchain Voting System</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/admin.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="/">Blockchain Voting System</a>
+        <nav class="nav-links">
+          <a class="active" href="/admin.html">Admin Panel</a>
+          <a href="/vote.html">Vote Now</a>
+          <a href="/results.html">Results</a>
+          <a href="/blockchain.html">Blockchain</a>
+        </nav>
+      </header>
+
+      <main class="page-content">
+        <section class="page-header">
+          <div>
+            <p class="eyebrow">Admin Module</p>
+            <h1>Election Management Dashboard</h1>
+            <p class="section-copy">
+              Manage voters, candidates, election status, and blockchain-derived
+              result summaries from one place.
+            </p>
+          </div>
+          <div class="inline-actions">
+            <button id="refreshDashboardButton" class="button button-secondary">
+              Refresh Dashboard
+            </button>
+            <a class="button button-primary" href="/blockchain.html"
+              >Open Blockchain Explorer</a
+            >
+          </div>
+        </section>
+
+        <div id="adminAlert" class="alert info" hidden></div>
+
+        <section class="stats-grid">
+          <article class="stat-card">
+            <span class="stat-label">Election Status</span>
+            <strong id="electionStatusBadge" class="status-badge neutral"
+              >Loading...</strong
+            >
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Total Votes</span>
+            <strong id="totalVotesCount">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Chain Integrity</span>
+            <strong id="chainStatusBadge" class="status-badge neutral"
+              >Checking...</strong
+            >
+          </article>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Election Controls</h2>
+            <p>Start or stop the election using the buttons below.</p>
+          </div>
+          <div class="inline-actions">
+            <button id="startElectionButton" class="button button-primary">
+              Start Election
+            </button>
+            <button id="endElectionButton" class="button button-danger">
+              End Election
+            </button>
+          </div>
+        </section>
+
+        <section class="panel-grid">
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Add Voter</h2>
+              <p>Register an eligible student or participant.</p>
+            </div>
+            <form id="voterForm" class="form-grid">
+              <label>
+                <span>Voter ID</span>
+                <input
+                  type="text"
+                  name="voterId"
+                  placeholder="VOTER001"
+                  required
+                />
+              </label>
+              <label>
+                <span>Voter Name</span>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Enter voter name"
+                  required
+                />
+              </label>
+              <label class="checkbox-field">
+                <input type="checkbox" name="isEligible" checked />
+                <span>Mark as eligible</span>
+              </label>
+              <button type="submit" class="button button-primary">
+                Add Voter
+              </button>
+            </form>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Add Candidate</h2>
+              <p>Create candidates available for the current election.</p>
+            </div>
+            <form id="candidateForm" class="form-grid">
+              <label>
+                <span>Candidate ID</span>
+                <input
+                  type="text"
+                  name="candidateId"
+                  placeholder="CAND001"
+                  required
+                />
+              </label>
+              <label>
+                <span>Candidate Name</span>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Enter candidate name"
+                  required
+                />
+              </label>
+              <label>
+                <span>Party / Group</span>
+                <input
+                  type="text"
+                  name="party"
+                  placeholder="Optional party or club name"
+                />
+              </label>
+              <button type="submit" class="button button-primary">
+                Add Candidate
+              </button>
+            </form>
+          </article>
+        </section>
+
+        <section class="panel-grid">
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Registered Voters</h2>
+              <p>Eligible voter records for the election.</p>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Voter ID</th>
+                    <th>Name</th>
+                    <th>Eligible</th>
+                    <th>Voted</th>
+                  </tr>
+                </thead>
+                <tbody id="voterTableBody"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Candidates</h2>
+              <p>Current candidates visible on the ballot.</p>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Candidate ID</th>
+                    <th>Name</th>
+                    <th>Party</th>
+                  </tr>
+                </thead>
+                <tbody id="candidateTableBody"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Results Summary</h2>
+            <p>Vote counts generated directly from the blockchain.</p>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Candidate ID</th>
+                  <th>Name</th>
+                  <th>Party</th>
+                  <th>Votes</th>
+                </tr>
+              </thead>
+              <tbody id="resultsTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

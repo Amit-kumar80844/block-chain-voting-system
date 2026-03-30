@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blockchain Explorer | Blockchain Voting System</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/blockchain.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="/">Blockchain Voting System</a>
+        <nav class="nav-links">
+          <a href="/admin.html">Admin Panel</a>
+          <a href="/vote.html">Vote Now</a>
+          <a href="/results.html">Results</a>
+          <a class="active" href="/blockchain.html">Blockchain</a>
+        </nav>
+      </header>
+
+      <main class="page-content">
+        <section class="page-header">
+          <div>
+            <p class="eyebrow">Public Blockchain Explorer</p>
+            <h1>Inspect Every Vote Block</h1>
+            <p class="section-copy">
+              Browse the full chain, review hash links, and verify integrity in
+              one click.
+            </p>
+          </div>
+          <div class="inline-actions">
+            <button id="refreshChainButton" class="button button-secondary">
+              Refresh Chain
+            </button>
+            <button id="verifyChainButton" class="button button-primary">
+              Verify Blockchain
+            </button>
+          </div>
+        </section>
+
+        <div id="blockchainAlert" class="alert info" hidden></div>
+
+        <section class="stats-grid">
+          <article class="stat-card">
+            <span class="stat-label">Total Blocks</span>
+            <strong id="chainBlockCount">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Chain Status</span>
+            <strong id="chainVerificationBadge" class="status-badge neutral"
+              >Checking...</strong
+            >
+          </article>
+        </section>
+
+        <section class="block-list" id="blockList"></section>
+      </main>
+    </div>
+  </body>
+</html>

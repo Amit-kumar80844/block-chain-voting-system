@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vote Now | Blockchain Voting System</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/vote.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="/">Blockchain Voting System</a>
+        <nav class="nav-links">
+          <a href="/admin.html">Admin Panel</a>
+          <a class="active" href="/vote.html">Vote Now</a>
+          <a href="/results.html">Results</a>
+          <a href="/blockchain.html">Blockchain</a>
+        </nav>
+      </header>
+
+      <main class="page-content">
+        <section class="page-header">
+          <div>
+            <p class="eyebrow">Voter Module</p>
+            <h1>Secure Ballot Casting</h1>
+            <p class="section-copy">
+              Sign in using a voter ID, review available candidates, and cast
+              your vote exactly once.
+            </p>
+          </div>
+        </section>
+
+        <div id="voteAlert" class="alert info" hidden></div>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Voter Login</h2>
+            <p>Use your voter ID to access the ballot.</p>
+          </div>
+          <form id="loginForm" class="form-inline">
+            <input
+              id="voterIdInput"
+              type="text"
+              name="voterId"
+              placeholder="Enter your voter ID"
+              required
+            />
+            <button type="submit" class="button button-primary">Login</button>
+          </form>
+          <div id="loggedInVoter" class="meta-card" hidden></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Available Candidates</h2>
+            <p>Select one candidate to cast your vote.</p>
+          </div>
+          <div class="status-row">
+            <span class="stat-label">Election Status</span>
+            <strong id="voterElectionStatus" class="status-badge neutral"
+              >Checking...</strong
+            >
+          </div>
+          <div id="candidateGrid" class="candidate-grid"></div>
+        </section>
+
+        <section id="voteConfirmation" class="panel confirmation-panel" hidden>
+          <div class="panel-header">
+            <h2>Vote Confirmation</h2>
+            <p>Your vote has been written into the blockchain.</p>
+          </div>
+          <div class="confirmation-grid">
+            <div class="meta-card">
+              <span class="stat-label">Block Index</span>
+              <strong id="confirmationBlockIndex">-</strong>
+            </div>
+            <div class="meta-card">
+              <span class="stat-label">Block Hash</span>
+              <code id="confirmationBlockHash" class="hash-output">-</code>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
